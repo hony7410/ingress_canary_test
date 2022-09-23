@@ -25,7 +25,7 @@ kubectl apply -f step1_deploy/echo-v2.yml
 
 ### step2
 
-create ingress for default routing
+create ingress for default service
 
 ```
 kubectl apply -f step2_ingress/ingress.yml
