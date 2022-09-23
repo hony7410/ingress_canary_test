@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/canary: 'true'
+    nginx.ingress.kubernetes.io/canary-by-cookie: 'my-cookie'
+  namespace: ingress-test
+  name: ingress-echo-canary
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: canary.test.com
+      http:
+        paths:
+          - path: /echo
+            pathType: Exact
+            backend:
+              service:
+                name: echo-v2
+                port:
+                  number: 80
